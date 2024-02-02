@@ -25,3 +25,10 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.circles {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(circle at center center, #FFFFFF, #FDFD96);
+  background-blend-mode: multiply;
+}

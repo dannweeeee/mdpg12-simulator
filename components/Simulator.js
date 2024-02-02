@@ -374,91 +374,94 @@ export default function Simulator() {
   }, [page, path]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center text-center bg-sky-200 rounded-xl shadow-xl mb-8">
-        <h2 className="card-title text-black pt-4">Algorithm Simulator</h2>
+    <div className="flex flex-col items-center justify-center circles">
+      <div className="flex flex-col items-center text-center rounded-xl mb-8 mt-4">
+        <h2 className="card-title text-black pt-4">MDP Group 12 AY23/24</h2>
+        <h3 className="font-bold text-black pt-4">Algorithm Simulator</h3>
       </div>
 
-      <div className="flex flex-col items-center text-center bg-sky-200 rounded-xl shadow-xl">
-        <div className="card-body items-center text-center p-4">
-          <h2 className="card-title text-black">Robot Position</h2>
+      <div className='flex items-center text-center justify-center'>
+        <div className="flex flex-col items-center text-center rounded-xl">
+          <div className="card-body items-center text-center p-4 bg-white rounded-3xl">
+            <h2 className="card-title text-black">Robot Position</h2>
+            <div className="form-control">
+              <label className="input-group input-group-horizontal">
+                <span className="bg-primary p-2">X</span>
+                <input
+                  onChange={onChangeRobotX}
+                  type="number"
+                  placeholder="1"
+                  min="1"
+                  max="18"
+                  className="input input-bordered  text-blue-900 w-20"
+                />
+                <span className="bg-primary p-2">Y</span>
+                <input
+                  onChange={onChangeRobotY}
+                  type="number"
+                  placeholder="1"
+                  min="1"
+                  max="18"
+                  className="input input-bordered  text-blue-900 w-20"
+                />
+                <span className="bg-primary p-2">D</span>
+                <select
+                  onChange={onRobotDirectionInputChange}
+                  value={robotDir}
+                  className="select text-blue-900 py-2 pl-2 pr-6"
+                >
+                  <option value={ObDirection.NORTH}>Up</option>
+                  <option value={ObDirection.SOUTH}>Down</option>
+                  <option value={ObDirection.WEST}>Left</option>
+                  <option value={ObDirection.EAST}>Right</option>
+                </select>
+                <button className="btn btn-success p-2" onClick={onClickRobot}>
+                  Set
+                </button>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center text-center bg-white p-4 rounded-3xl m-8">
+          <h2 className="card-title text-black pb-2">Add Obstacles</h2>
           <div className="form-control">
             <label className="input-group input-group-horizontal">
               <span className="bg-primary p-2">X</span>
               <input
-                onChange={onChangeRobotX}
+                onChange={onChangeX}
                 type="number"
                 placeholder="1"
-                min="1"
-                max="18"
+                min="0"
+                max="19"
                 className="input input-bordered  text-blue-900 w-20"
               />
               <span className="bg-primary p-2">Y</span>
               <input
-                onChange={onChangeRobotY}
+                onChange={onChangeY}
                 type="number"
                 placeholder="1"
-                min="1"
-                max="18"
+                min="0"
+                max="19"
                 className="input input-bordered  text-blue-900 w-20"
               />
               <span className="bg-primary p-2">D</span>
               <select
-                onChange={onRobotDirectionInputChange}
-                value={robotDir}
+                onChange={onDirectionInputChange}
+                value={directionInput}
                 className="select text-blue-900 py-2 pl-2 pr-6"
               >
                 <option value={ObDirection.NORTH}>Up</option>
                 <option value={ObDirection.SOUTH}>Down</option>
                 <option value={ObDirection.WEST}>Left</option>
                 <option value={ObDirection.EAST}>Right</option>
+                <option value={ObDirection.SKIP}>None</option>
               </select>
-              <button className="btn btn-success p-2" onClick={onClickRobot}>
-                Set
+              <button className="btn btn-success p-2" onClick={onClickObstacle}>
+                Add
               </button>
             </label>
           </div>
-        </div>
-      </div>
-
-      <div className="flex flex-col items-center text-center bg-sky-200 p-4 rounded-xl shadow-xl m-8">
-        <h2 className="card-title text-black pb-2">Add Obstacles</h2>
-        <div className="form-control">
-          <label className="input-group input-group-horizontal">
-            <span className="bg-primary p-2">X</span>
-            <input
-              onChange={onChangeX}
-              type="number"
-              placeholder="1"
-              min="0"
-              max="19"
-              className="input input-bordered  text-blue-900 w-20"
-            />
-            <span className="bg-primary p-2">Y</span>
-            <input
-              onChange={onChangeY}
-              type="number"
-              placeholder="1"
-              min="0"
-              max="19"
-              className="input input-bordered  text-blue-900 w-20"
-            />
-            <span className="bg-primary p-2">D</span>
-            <select
-              onChange={onDirectionInputChange}
-              value={directionInput}
-              className="select text-blue-900 py-2 pl-2 pr-6"
-            >
-              <option value={ObDirection.NORTH}>Up</option>
-              <option value={ObDirection.SOUTH}>Down</option>
-              <option value={ObDirection.WEST}>Left</option>
-              <option value={ObDirection.EAST}>Right</option>
-              <option value={ObDirection.SKIP}>None</option>
-            </select>
-            <button className="btn btn-success p-2" onClick={onClickObstacle}>
-              Add
-            </button>
-          </label>
         </div>
       </div>
 
